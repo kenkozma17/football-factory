@@ -10,6 +10,12 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Models\PlayerBio;
+use App\Models\PlayerStat;
+use App\Models\PlayerRating;
+
 class User extends Authenticatable
 {
     use HasApiTokens;
@@ -60,4 +66,18 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function player_bio(): HasOne
+    {
+        return $this->hasOne(PlayerBio::class);
+    }
+
+    public function player_stats(): HasOne
+    {
+        return $this->hasOne(PlayerStat::class);
+    }
+
+    public function player_ratings(): HasMany {
+        return $this->hasMany(PlayerRating::class);
+    }
 }
