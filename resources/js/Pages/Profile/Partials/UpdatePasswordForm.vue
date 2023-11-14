@@ -104,7 +104,10 @@ const updatePassword = () => {
         </template>
 
         <template #actions>
-            <ActionMessage :on="form.recentlySuccessful" class="me-3">
+            <ActionMessage
+                :on="form.recentlySuccessful"
+                class="me-3 text-green-400"
+            >
                 Saved.
             </ActionMessage>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Models\User;
 
 class PlayerController extends Controller
 {
@@ -36,7 +37,13 @@ class PlayerController extends Controller
      */
     public function show(string $id)
     {
-      return Inertia::render('Players/Show');
+      $player = User::where('id', $id)
+        ->whereHas('player_bio', function($query) {
+          $query->where('is_public', true);
+        })->first();
+      return Inertia::render('Players/Show', [
+        'player' => $player
+      ]);
     }
 
     /**

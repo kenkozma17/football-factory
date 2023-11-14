@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { Link, router, useForm } from "@inertiajs/vue3";
 import ActionMessage from "@/Components/ActionMessage.vue";
 import FormSection from "@/Components/FormSection.vue";
@@ -17,12 +17,30 @@ const form = useForm({
     _method: "PUT",
     name: props.user.name,
     email: props.user.email,
+    birthdate: props.user.player_bio?.birthdate,
+    is_public: props.user.player_bio?.is_public ? true : false,
     photo: null,
 });
 
 const verificationLinkSent = ref(null);
 const photoPreview = ref(null);
 const photoInput = ref(null);
+const canGoPublicMsg = ref(
+    "Check this box to make your profile public to the world."
+);
+const cantGoPublicMsg = ref(
+    "To make your profile public, complete the athletic and location information fields below."
+);
+
+const canGoPublic = computed(() => {
+    return (
+        props.user.player_bio?.province &&
+        props.user.player_bio?.city &&
+        props.user.player_bio?.position &&
+        props.user.player_bio?.nationality &&
+        props.user.player_bio?.preferred_foot
+    );
+});
 
 const updateProfileInformation = () => {
     if (photoInput.value) {
@@ -105,14 +123,14 @@ const clearPhotoFileInput = () => {
                     <img
                         :src="user.profile_photo_url"
                         :alt="user.name"
-                        class="rounded-full h-20 w-20 object-cover"
+                        class="h-40 w-40 object-cover"
                     />
                 </div>
 
                 <!-- New Profile Photo Preview -->
                 <div v-show="photoPreview" class="mt-2">
                     <span
-                        class="block rounded-full w-20 h-20 bg-cover bg-no-repeat bg-center"
+                        class="block w-40 h-40 bg-cover bg-no-repeat bg-center"
                         :style="
                             'background-image: url(\'' + photoPreview + '\');'
                         "
@@ -157,11 +175,11 @@ const clearPhotoFileInput = () => {
             <div class="col-span-6 sm:col-span-4">
                 <InputLabel class="text-white" for="email" value="Email" />
                 <TextInput
+                    disabled
                     id="email"
                     v-model="form.email"
                     type="email"
-                    class="mt-1 block w-full bg-dark border-dark"
-                    required
+                    class="disabled:cursor-not-allowed mt-1 block w-full bg-dark border-dark"
                     autocomplete="username"
                 />
                 <InputError :message="form.errors.email" class="mt-2" />
@@ -195,10 +213,48 @@ const clearPhotoFileInput = () => {
                     </div>
                 </div>
             </div>
+
+            <!-- Birth Date -->
+            <div class="col-span-6 sm:col-span-4">
+                <InputLabel
+                    class="text-white"
+                    for="birthdate"
+                    value="Birth Date"
+                />
+                <TextInput
+                    id="birthdate"
+                    v-model="form.birthdate"
+                    type="date"
+                    class="mt-1 block w-full bg-dark border-dark"
+                    required
+                    autocomplete="birthdate"
+                />
+                <InputError :message="form.errors.birthdate" class="mt-2" />
+            </div>
+
+            <!-- Go Public -->
+            <div class="col-span-6 sm:col-span-4">
+                <InputLabel
+                    class="text-white cursor-pointer"
+                    for="is_public"
+                    :value="canGoPublic ? canGoPublicMsg : cantGoPublicMsg"
+                />
+                <input
+                    :disabled="!canGoPublic"
+                    id="is_public"
+                    v-model="form.is_public"
+                    type="checkbox"
+                    class="disabled:cursor-not-allowed mt-1 block rounded bg-dark border-white cursor-pointer"
+                />
+                <InputError :message="form.errors.is_public" class="mt-2" />
+            </div>
         </template>
 
         <template #actions>
-            <ActionMessage :on="form.recentlySuccessful" class="me-3">
+            <ActionMessage
+                :on="form.recentlySuccessful"
+                class="me-3 text-green-400"
+            >
                 Saved.
             </ActionMessage>
 

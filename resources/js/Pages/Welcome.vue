@@ -8,8 +8,7 @@ import PlayerCard from "@/Components/Players/PlayerCard.vue";
 defineProps({
     canLogin: Boolean,
     canRegister: Boolean,
-    laravelVersion: String,
-    phpVersion: String,
+    players: Array,
 });
 </script>
 
@@ -24,11 +23,11 @@ defineProps({
             :small="true"
             class="md:mt-12 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4"
         >
-            <PlayerCard />
-            <PlayerCard />
-            <PlayerCard />
-            <PlayerCard />
-            <PlayerCard />
+            <PlayerCard
+                :player="player"
+                v-for="player in players"
+                :key="player.email"
+            />
         </Wrapper>
     </PublicLayout>
 </template>

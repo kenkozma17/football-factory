@@ -1,11 +1,11 @@
 <script setup>
-import AppLayout from '@/Layouts/AppLayout.vue';
-import DeleteUserForm from '@/Pages/Profile/Partials/DeleteUserForm.vue';
-import LogoutOtherBrowserSessionsForm from '@/Pages/Profile/Partials/LogoutOtherBrowserSessionsForm.vue';
-import SectionBorder from '@/Components/SectionBorder.vue';
-import TwoFactorAuthenticationForm from '@/Pages/Profile/Partials/TwoFactorAuthenticationForm.vue';
-import UpdatePasswordForm from '@/Pages/Profile/Partials/UpdatePasswordForm.vue';
-import UpdateProfileInformationForm from '@/Pages/Profile/Partials/UpdateProfileInformationForm.vue';
+import AppLayout from "@/Layouts/AppLayout.vue";
+import SectionBorder from "@/Components/SectionBorder.vue";
+import UpdatePasswordForm from "@/Pages/Profile/Partials/UpdatePasswordForm.vue";
+import UpdateProfileInformationForm from "@/Pages/Profile/Partials/UpdateProfileInformationForm.vue";
+import UpdateLocationForm from "@/Pages/Profile/Partials/UpdateLocationForm.vue";
+import UpdateAthleticDetailsForm from "@/Pages/Profile/Partials/UpdateAthleticDetailsForm.vue";
+import UpdateSocialsForm from "@/Pages/Profile/Partials/UpdateSocialsForm.vue";
 
 defineProps({
     confirmsTwoFactorAuthentication: Boolean,
@@ -24,7 +24,36 @@ defineProps({
         <div>
             <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
                 <div v-if="$page.props.jetstream.canUpdateProfileInformation">
-                    <UpdateProfileInformationForm :user="$page.props.auth.user" />
+                    <UpdateProfileInformationForm
+                        :user="$page.props.auth.user"
+                    />
+
+                    <SectionBorder />
+                </div>
+
+                <div>
+                    <UpdateAthleticDetailsForm
+                        :user="$page.props.auth.user"
+                        class="mt-10 sm:mt-0"
+                    />
+
+                    <SectionBorder />
+                </div>
+
+                <div>
+                    <UpdateSocialsForm
+                        :user="$page.props.auth.user"
+                        class="mt-10 sm:mt-0"
+                    />
+
+                    <SectionBorder />
+                </div>
+
+                <div>
+                    <UpdateLocationForm
+                        :user="$page.props.auth.user"
+                        class="mt-10 sm:mt-0"
+                    />
 
                     <SectionBorder />
                 </div>
@@ -34,23 +63,6 @@ defineProps({
 
                     <SectionBorder />
                 </div>
-
-                <div v-if="$page.props.jetstream.canManageTwoFactorAuthentication">
-                    <TwoFactorAuthenticationForm
-                        :requires-confirmation="confirmsTwoFactorAuthentication"
-                        class="mt-10 sm:mt-0"
-                    />
-
-                    <SectionBorder />
-                </div>
-
-                <LogoutOtherBrowserSessionsForm :sessions="sessions" class="mt-10 sm:mt-0" />
-
-                <template v-if="$page.props.jetstream.hasAccountDeletionFeatures">
-                    <SectionBorder />
-
-                    <DeleteUserForm class="mt-10 sm:mt-0" />
-                </template>
             </div>
         </div>
     </AppLayout>

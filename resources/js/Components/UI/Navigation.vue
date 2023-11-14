@@ -22,7 +22,7 @@ const logout = () => {
                 >
             </div>
             <div v-if="$page.props.auth.user" class="flex gap-x-4 items-center">
-                <Link href="/dashboard" class="hover:opacity-75">{{
+                <Link href="/user/profile" class="hover:opacity-75">{{
                     $page.props.auth.user.name
                 }}</Link>
                 <form @submit.prevent="logout">

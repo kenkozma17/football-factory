@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('player_bio', function (Blueprint $table) {
+        Schema::create('player_bios', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete();
             $table->text('description')->nullable();
@@ -43,6 +43,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('player_bio');
+        Schema::dropIfExists('player_bios');
     }
 };

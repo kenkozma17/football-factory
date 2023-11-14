@@ -15,6 +15,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Models\PlayerBio;
 use App\Models\PlayerStat;
 use App\Models\PlayerRating;
+use Illuminate\Support\Str;
+
 
 class User extends Authenticatable
 {
@@ -65,7 +67,10 @@ class User extends Authenticatable
      */
     protected $appends = [
         'profile_photo_url',
+        'slugged_name'
     ];
+
+    protected $with = ["player_bio"];
 
     public function player_bio(): HasOne
     {
@@ -79,5 +84,9 @@ class User extends Authenticatable
 
     public function player_ratings(): HasMany {
         return $this->hasMany(PlayerRating::class);
+    }
+
+    public function getSluggedNameAttribute() {
+      return Str::slug($this->name);
     }
 }
