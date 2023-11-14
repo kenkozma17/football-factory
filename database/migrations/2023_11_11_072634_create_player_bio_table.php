@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('secondary_position')->nullable();
             $table->string('current_club')->nullable();
             $table->date('birthdate')->nullable();
+            $table->string('gender')->nullable();
             $table->decimal('height')->nullable();
             $table->decimal('weight')->nullable();
             $table->string('nationality')->nullable();

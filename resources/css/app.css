@@ -5,3 +5,21 @@
 [x-cloak] {
     display: none;
 }
+
+@layer base {
+    h1 {
+        @apply md:text-[2.5rem] text-[1.25rem] font-bold;
+    }
+
+    h1.large {
+        @apply md:text-[4rem] text-[2rem] font-bold;
+    }
+
+    h2 {
+        @apply md:text-[2rem] text-[1.15rem] font-bold;
+    }
+
+    h2.large {
+        @apply md:text-[3.5rem] text-[1.75rem] font-bold;
+    }
+}

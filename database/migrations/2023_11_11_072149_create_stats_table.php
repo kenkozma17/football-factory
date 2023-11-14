@@ -14,11 +14,20 @@ return new class extends Migration
         Schema::create('player_stats', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete();
-            $table->decimal('pace')->nullable();
-            $table->decimal('passing')->nullable();
-            $table->decimal('shooting')->nullable();
-            $table->decimal('physicality')->nullable();
-            $table->decimal('defending')->nullable();
+            $table->decimal('acceleration')->nullable();
+            $table->decimal('sprint_speed')->nullable();
+            $table->decimal('vision')->nullable();
+            $table->decimal('crossing')->nullable();
+            $table->decimal('short_pass')->nullable();
+            $table->decimal('finishing')->nullable();
+            $table->decimal('shot_power')->nullable();
+            $table->decimal('stamina')->nullable();
+            $table->decimal('strength')->nullable();
+            $table->decimal('aggression')->nullable();
+            $table->decimal('sliding_tackle')->nullable();
+            $table->decimal('interceptions')->nullable();
+            $table->decimal('agility')->nullable();
+            $table->decimal('ball_control')->nullable();
             $table->decimal('dribbling')->nullable();
             $table->timestamps();
         });

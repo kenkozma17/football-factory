@@ -80,12 +80,13 @@ const props = defineProps({
                             <h1 class="text-[2rem] font-bold">
                                 {{ props.player.name }}
                             </h1>
-                            <button
+                            <a
+                                :href="'/rate-player/' + props.player.id"
                                 class="hover:opacity-100 opacity-80 flex items-center gap-x-2 bg-darkgreen text-white rounded-full px-5"
                             >
                                 <StarIcon />
                                 <span>Rate Player</span>
-                            </button>
+                            </a>
                         </div>
                         <div
                             class="flex gap-x-2 items-center"

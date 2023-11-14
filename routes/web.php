@@ -7,6 +7,7 @@ use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\Auth\UserProfileInformationController;
 use App\Http\Controllers\PlayerSearchController;
+use App\Http\Controllers\PlayerRatingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,7 @@ Route::get('callback/google', [GoogleController::class, 'callbackToGoogle']);
 Route::get('/', [PlayerSearchController::class, 'index']);
 
 Route::get('/player/{id}/{slug}', [PlayerController::class, 'show'])->name('player-profile');
+Route::get('/rate-player/{id}', [PlayerRatingController::class, 'show'])->name('rate-player');
 
 Route::middleware([
     'auth:sanctum',

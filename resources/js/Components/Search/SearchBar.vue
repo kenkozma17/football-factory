@@ -1,7 +1,7 @@
 <script setup></script>
 <template>
     <section>
-        <h1 class="text-[2rem] font-bold text-center">
+        <h1 class="text-center">
             Discover Talented Footballers of The Philippines
         </h1>
         <div
