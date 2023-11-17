@@ -14,21 +14,22 @@ return new class extends Migration
         Schema::create('player_stats', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete();
-            $table->decimal('acceleration')->nullable();
-            $table->decimal('sprint_speed')->nullable();
-            $table->decimal('vision')->nullable();
-            $table->decimal('crossing')->nullable();
-            $table->decimal('short_pass')->nullable();
-            $table->decimal('finishing')->nullable();
-            $table->decimal('shot_power')->nullable();
-            $table->decimal('stamina')->nullable();
-            $table->decimal('strength')->nullable();
-            $table->decimal('aggression')->nullable();
-            $table->decimal('sliding_tackle')->nullable();
-            $table->decimal('interceptions')->nullable();
-            $table->decimal('agility')->nullable();
-            $table->decimal('ball_control')->nullable();
-            $table->decimal('dribbling')->nullable();
+            $table->integer('acceleration')->nullable();
+            $table->integer('sprint_speed')->nullable();
+            $table->integer('vision')->nullable();
+            $table->integer('crossing')->nullable();
+            $table->integer('short_pass')->nullable();
+            $table->integer('finishing')->nullable();
+            $table->integer('shot_power')->nullable();
+            $table->integer('stamina')->nullable();
+            $table->integer('strength')->nullable();
+            $table->integer('aggression')->nullable();
+            $table->integer('sliding_tackle')->nullable();
+            $table->integer('interceptions')->nullable();
+            $table->integer('agility')->nullable();
+            $table->integer('ball_control')->nullable();
+            $table->integer('dribbling')->nullable();
+            $table->integer('overall_rating')->nullable();
             $table->timestamps();
         });
     }

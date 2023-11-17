@@ -22,4 +22,8 @@
     h2.large {
         @apply md:text-[3.5rem] text-[1.75rem] font-bold;
     }
+
+    h3 {
+        @apply md:text-[1.75rem] text-[1rem] font-bold;
+    }
 }

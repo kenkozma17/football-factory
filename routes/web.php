@@ -8,6 +8,7 @@ use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\Auth\UserProfileInformationController;
 use App\Http\Controllers\PlayerSearchController;
 use App\Http\Controllers\PlayerRatingController;
+use App\Http\Controllers\PlayerLeaderboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +25,9 @@ Route::get('auth/google', [GoogleController::class, 'signInwithGoogle']);
 Route::get('callback/google', [GoogleController::class, 'callbackToGoogle']);
 
 Route::get('/', [PlayerSearchController::class, 'index']);
+Route::get('/leaderboards', [PlayerLeaderboardController::class, 'index']);
 
 Route::get('/player/{id}/{slug}', [PlayerController::class, 'show'])->name('player-profile');
-Route::get('/rate-player/{id}', [PlayerRatingController::class, 'show'])->name('rate-player');
 
 Route::middleware([
     'auth:sanctum',
@@ -36,6 +37,9 @@ Route::middleware([
     // Route::get('/dashboard', function () {
     //     return Inertia::render('Dashboard');
     // })->name('dashboard');
+
+    Route::get('/rate-player/{id}', [PlayerRatingController::class, 'show'])->name('rate-player');
+    Route::post('/rate-player/{id}', [PlayerRatingController::class, 'store'])->name('player-rating.create'); 
 
     Route::put('/user/profile-information/update-location', [UserProfileInformationController::class, 'updateLocation'])
       ->name('user-profile-information.update-location');

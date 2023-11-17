@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\User;
+use App\Models\PlayerRating;
+use Auth;
 
 class PlayerController extends Controller
 {
@@ -37,12 +39,13 @@ class PlayerController extends Controller
      */
     public function show(string $id)
     {
-      $player = User::where('id', $id)
+      $player = User::where('id', $id)->withCount(['player_ratings'])
         ->whereHas('player_bio', function($query) {
           $query->where('is_public', true);
         })->first();
+
       return Inertia::render('Players/Show', [
-        'player' => $player
+        'player' => $player,
       ]);
     }
 

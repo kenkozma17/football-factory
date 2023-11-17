@@ -9,15 +9,28 @@ use Illuminate\Support\Facades\Route;
 
 class PlayerSearchController extends Controller
 {
-    public function index() {
-      $players = User::whereHas('player_bio', function($query) {
+    public function index(Request $request) {
+      $search = $request->get('search');
+      $players = User::where([
+        [function ($query) use ($request) {
+          if (($s = $request->search)) {
+            $query->orWhere('name', 'LIKE', '%' . $s . '%')
+              ->get();
+          }
+        }]
+      ])->whereHas('player_bio', function($query) use ($request) {
+        // if (($province = $request->province)) {
+        //   $query->where('province', 'LIKE', '%' . $province . '%');
+        // }
+        // if(($position = $request->position)) {
+        //   $query->where('position', 'LIKE', '%' . $position . '%');
+        // }
         $query->where('is_public', true);
-      })->get();
+      })->paginate(18);
 
       return Inertia::render('Welcome', [
         'players' => $players,
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
+        'search' => $search
       ]);
     }
 }

@@ -33,17 +33,23 @@ class PlayerBio extends Model
     protected $appends = ['location', 'birthday', 'age', 'short_position'];
 
     public function getLocationAttribute() {
-      return $this->city . ', ' . $this->province;
+      if($this->city && $this->province) {
+        return $this->city . ', ' . $this->province;
+      }
     }
 
     public function getBirthdayAttribute() {
-      $birthdate = Carbon::parse($this->birthdate);
-      return $birthdate->format('M d, Y');
+      if($this->birthdate) {
+        $birthdate = Carbon::parse($this->birthdate);
+        return $birthdate->format('M d, Y');
+      }
     }
 
     public function getAgeAttribute() {
-      $birthdate = Carbon::parse($this->birthdate);
-      return $birthdate->age;
+      if($this->birthdate) {
+        $birthdate = Carbon::parse($this->birthdate);
+        return $birthdate->age;
+      }
     }
 
     public function getShortPositionAttribute() {
@@ -60,6 +66,8 @@ class PlayerBio extends Model
         'Striker/Forward' => 'ST',
       ];
 
-      return $positions[$this->position];
+      if($this->position) {
+        return $positions[$this->position];
+      }
     }
 }

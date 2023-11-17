@@ -16,12 +16,21 @@ return new class extends Migration
             $table->unsignedBigInteger('rater_id');
             $table->foreign('rater_id')->references('id')->on('users');
             $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete();
-            $table->decimal('pace')->nullable();
-            $table->decimal('passing')->nullable();
-            $table->decimal('shooting')->nullable();
-            $table->decimal('physicality')->nullable();
-            $table->decimal('defending')->nullable();
-            $table->decimal('dribbling')->nullable();
+            $table->integer('acceleration')->nullable();
+            $table->integer('sprint_speed')->nullable();
+            $table->integer('vision')->nullable();
+            $table->integer('crossing')->nullable();
+            $table->integer('short_pass')->nullable();
+            $table->integer('finishing')->nullable();
+            $table->integer('shot_power')->nullable();
+            $table->integer('stamina')->nullable();
+            $table->integer('strength')->nullable();
+            $table->integer('aggression')->nullable();
+            $table->integer('sliding_tackle')->nullable();
+            $table->integer('interceptions')->nullable();
+            $table->integer('agility')->nullable();
+            $table->integer('ball_control')->nullable();
+            $table->integer('dribbling')->nullable();
             $table->timestamps();
         });
     }

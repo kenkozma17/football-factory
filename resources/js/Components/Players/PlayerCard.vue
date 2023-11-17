@@ -15,10 +15,16 @@ const props = defineProps({
         :href="'/player/' + player.id + '/' + player.slugged_name"
         class="bg-tertiary-dark rounded-xl"
     >
-        <div class="headshot bg-secondary-dark flex justify-center relative">
-            <p class="absolute top-5 left-5 font-bold text-[1.5rem]">
-                {{ props.player.player_bio.short_position }}
-            </p>
+        <div
+            class="headshot bg-secondary-dark flex justify-center relative rounded-tl-xl rounded-tr-xl"
+        >
+            <div
+                class="absolute top-3 left-3 bg-black bg-opacity-80 rounded-full w-[3.125rem] h-[3.125rem] flex items-center justify-center text-center"
+            >
+                <p class="font-bold text-[1.5rem]">
+                    {{ props.player.player_bio.short_position }}
+                </p>
+            </div>
             <img
                 v-if="props.player.profile_photo_url"
                 class="object-cover w-full h-60 rounded-tl-xl rounded-tr-xl"

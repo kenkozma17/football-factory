@@ -70,7 +70,7 @@ class User extends Authenticatable
         'slugged_name'
     ];
 
-    protected $with = ["player_bio"];
+    protected $with = ["player_bio", "player_stats"];
 
     public function player_bio(): HasOne
     {
