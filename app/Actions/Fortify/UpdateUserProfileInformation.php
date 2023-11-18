@@ -39,6 +39,12 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             ])->save();
             
             $playerBio = PlayerBio::where('user_id', $user->id)->first();
+
+            if($playerBio === null) {
+              $playerBio = PlayerBio::create([
+                'user_id' => $user->id
+              ]);
+            }
             $playerBio->birthdate = $input['birthdate'];
             $playerBio->is_public = $input['is_public'] ? 1 : 0;
             $playerBio->save();
