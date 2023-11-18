@@ -33,7 +33,7 @@ return [
     'google' => [
       'client_id' => env("GOOGLE_OATH_CLIENT_ID"),
       'client_secret' => env("GOOGLE_OATH_SECRET"),
-      'redirect' => 'http://localhost/callback/google',
+      'redirect' => env("APP_URL") . '/callback/google',
     ],
 
 ];
