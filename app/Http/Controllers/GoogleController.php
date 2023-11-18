@@ -11,13 +11,13 @@ class GoogleController extends Controller
 {
   public function signInwithGoogle()
   {
-      return Socialite::driver('google')->stateless()->redirect();
+      return Socialite::driver('google')->redirect();
   }
   public function callbackToGoogle()
   {
       try {
    
-          $user = Socialite::driver('google')->stateless()->user();
+          $user = Socialite::driver('google')->user();
     
           $finduser = User::where('gauth_id', $user->id)->first();
     
