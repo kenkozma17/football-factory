@@ -26,7 +26,7 @@ const toggleMobileMenu = (show) =>
         <Wrapper class="flex justify-between items-center">
             <div class="flex md:gap-x-8 gap-x-2 items-center">
                 <Link href="/">
-                    <Logo class="md:w-full w-48" />
+                    <Logo class="md:w-full w-44" />
                 </Link>
                 <!-- <Link class="hover:opacity-100 opacity-75" href="/about"
                     >About</Link
@@ -96,7 +96,7 @@ const toggleMobileMenu = (show) =>
             <!-- Mobile Menu -->
             <div
                 :class="showMenu ? 'w-full' : 'left-[100%]'"
-                class="absolute top-0 bottom-0 left-0 duration-700 transition-all w-0 h-full bg-dark z-50 p-10"
+                class="fixed top-0 bottom-0 left-0 duration-700 transition-all w-0 h-full bg-dark z-50 p-10"
             >
                 <div class="flex justify-between">
                     <Link href="/">

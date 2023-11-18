@@ -35,7 +35,7 @@ const ratePlayerUrl = computed(() => {
     <PublicLayout>
         <Wrapper :small="true">
             <div
-                class="grid md:grid-cols-5 grid-cols-1 items-start md:gap-x-6 gap-y-2 md:mt-32 mb-12 mt-12"
+                class="grid md:grid-cols-5 grid-cols-1 items-start md:gap-x-6 gap-y-2 md:mt-32 sm:mb-12 sm:mt-12 mt-6 mb-6"
             >
                 <section class="col-span-2 flex flex-col gap-y-4">
                     <!-- Image Headshot -->

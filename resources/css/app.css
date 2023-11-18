@@ -6,6 +6,12 @@
     display: none;
 }
 
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 @layer base {
     h1 {
         @apply md:text-[2.5rem] text-[1.25rem] font-bold;
