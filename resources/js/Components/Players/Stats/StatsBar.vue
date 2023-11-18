@@ -9,7 +9,7 @@ const props = defineProps({
 const getStatColor = (rating) => {
     if (rating < 50) {
         return "red";
-    } else if (rating >= 51 && rating <= 74) {
+    } else if (rating >= 50 && rating <= 74) {
         return "yellow";
     } else {
         return "green";
