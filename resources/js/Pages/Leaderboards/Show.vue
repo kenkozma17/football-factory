@@ -25,10 +25,14 @@ const props = defineProps({
                         v-for="(playerStat, index) in props.topPlayerStats"
                     >
                         <div
-                            class="bg-secondary-dark bg-opacity-75 hover:bg-opacity-100 rounded-3xl h-24 w-full grid grid-cols-2 py-1.5 px-5"
+                            class="bg-secondary-dark bg-opacity-75 hover:bg-opacity-100 rounded-3xl h-24 w-full grid md:grid-cols-2 grid-cols-3 py-1.5 px-5"
                         >
-                            <div class="col-span-1 flex items-center">
-                                <p class="font-bold text-[1.5rem]">
+                            <div
+                                class="md:col-span-1 col-span-2 flex items-center"
+                            >
+                                <p
+                                    class="font-bold md:text-[1.5rem] text-[1.25rem]"
+                                >
                                     {{ index + 1 }}
                                 </p>
                                 <img
@@ -37,10 +41,12 @@ const props = defineProps({
                                     alt=""
                                 />
                                 <div class="ml-4">
-                                    <p class="text-[1.25rem]">
+                                    <p class="md:text-[1.25rem] text-sm">
                                         {{ playerStat.user.name }}
                                     </p>
-                                    <p class="font-light text-gray-400 text-sm">
+                                    <p
+                                        class="font-light text-gray-400 md:text-sm text-xs"
+                                    >
                                         {{
                                             playerStat.user.player_bio.position
                                         }}
@@ -50,8 +56,8 @@ const props = defineProps({
                             <div
                                 class="col-span-1 flex items-center justify-end gap-x-2"
                             >
-                                <StarIcon />
-                                <p class="font-bold text-[1.5rem]">
+                                <StarIcon class="md:w-full w-4" />
+                                <p class="font-bold md:text-[1.5rem]">
                                     {{ playerStat.overall_rating }}
                                 </p>
                             </div>
