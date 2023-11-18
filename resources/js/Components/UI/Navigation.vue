@@ -39,7 +39,7 @@ const toggleMobileMenu = (show) =>
             </div>
             <div
                 v-if="$page.props.auth.user"
-                class="md:gap-x-4 items-center flex"
+                class="md:gap-x-4 items-center md:flex hidden"
             >
                 <Link
                     href="/user/profile"
@@ -53,27 +53,6 @@ const toggleMobileMenu = (show) =>
                         Log Out
                     </button>
                 </form>
-                <div class="md:hidden flex gap-x-2.5 items-center ml-3">
-                    <template v-if="!$page.props.auth.user">
-                        <Link class="opacity-75 text-sm" href="/register"
-                            >Sign Up</Link
-                        >
-                        <Link
-                            class="bg-white transition-colors text-black px-3 py-1 rounded-full hover:bg-opacity-75 text-sm"
-                            href="/login"
-                            >Login</Link
-                        >
-                    </template>
-
-                    <div
-                        class="space-y-2 cursor-pointer"
-                        @click="toggleMobileMenu(true)"
-                    >
-                        <div class="w-8 h-0.5 bg-white"></div>
-                        <div class="w-8 h-0.5 bg-white"></div>
-                        <div class="w-8 h-0.5 bg-white"></div>
-                    </div>
-                </div>
             </div>
             <div v-else class="md:flex hidden gap-x-4 items-center">
                 <Link class="opacity-75" href="/register">Sign Up</Link>
@@ -82,6 +61,36 @@ const toggleMobileMenu = (show) =>
                     href="/login"
                     >Login</Link
                 >
+            </div>
+
+            <div class="md:hidden flex gap-x-2.5 items-center ml-3">
+                <template v-if="!$page.props.auth.user">
+                    <Link class="opacity-75 text-sm" href="/register"
+                        >Sign Up</Link
+                    >
+                    <Link
+                        class="bg-white transition-colors text-black px-3 py-1 rounded-full hover:bg-opacity-75 text-sm"
+                        href="/login"
+                        >Login</Link
+                    >
+                </template>
+
+                <template v-if="$page.props.auth.user">
+                    <Link
+                        href="/user/profile"
+                        class="hover:opacity-75 md:text-base text-sm"
+                        >{{ $page.props.auth.user.name }}</Link
+                    >
+                </template>
+
+                <div
+                    class="space-y-2 cursor-pointer"
+                    @click="toggleMobileMenu(true)"
+                >
+                    <div class="w-8 h-0.5 bg-white"></div>
+                    <div class="w-8 h-0.5 bg-white"></div>
+                    <div class="w-8 h-0.5 bg-white"></div>
+                </div>
             </div>
 
             <!-- Mobile Menu -->

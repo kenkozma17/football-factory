@@ -35,7 +35,7 @@ const ratePlayerUrl = computed(() => {
     <PublicLayout>
         <Wrapper :small="true">
             <div
-                class="grid md:grid-cols-5 grid-cols-1 items-start gap-x-6 gap-y-2 md:mt-32 mb-12 mt-12"
+                class="grid md:grid-cols-5 grid-cols-1 items-start md:gap-x-6 gap-y-2 md:mt-32 mb-12 mt-12"
             >
                 <section class="col-span-2 flex flex-col gap-y-4">
                     <!-- Image Headshot -->
@@ -110,7 +110,7 @@ const ratePlayerUrl = computed(() => {
                     <!-- Name, Location, and School  -->
                     <div>
                         <div class="flex justify-between">
-                            <h1 class="text-[2rem] font-bold">
+                            <h1>
                                 {{ props.player.name }}
                             </h1>
                         </div>
@@ -119,7 +119,7 @@ const ratePlayerUrl = computed(() => {
                             v-if="props.player.player_bio.location"
                         >
                             <LocationIcon />
-                            <p>
+                            <p class="md:text-base text-sm">
                                 Lives in {{ props.player.player_bio.location }}
                             </p>
                         </div>
@@ -128,7 +128,7 @@ const ratePlayerUrl = computed(() => {
                             v-if="props.player.player_bio.current_school"
                         >
                             <SchoolIcon />
-                            <p>
+                            <p class="md:text-base text-sm">
                                 Studies at
                                 {{ props.player.player_bio.current_school }}
                                 (Class of

@@ -219,12 +219,23 @@ const submitRating = () => {
                     <CheckIcon class="w-12 h-12" />
                     <h2>Player Rating Submitted Successfully!</h2>
                 </div>
-                <div class="md:my-8 my-4">
+                <div class="md:my-8 my-4 flex">
                     <Link
                         href="/"
                         class="bg-white cursor-pointer hover:opacity-80 disabled:opacity-30 text-black md:px-6 md:py-2 px-4 py-1 md:text-base text-sm rounded-lg"
                     >
                         Go Home
+                    </Link>
+                    <Link
+                        :href="
+                            '/player/' +
+                            props.player.id +
+                            '/' +
+                            props.player.slugged_name
+                        "
+                        class="bg-white cursor-pointer hover:opacity-80 disabled:opacity-30 text-black md:px-6 md:py-2 px-4 py-1 md:text-base text-sm rounded-lg"
+                    >
+                        Return To Player
                     </Link>
                 </div>
             </div>

@@ -41,7 +41,7 @@ defineProps({
                 </div>
 
                 <div>
-                    <UpdateSocialsForm
+                    <UpdateLocationForm
                         :user="$page.props.auth.user"
                         class="mt-10 sm:mt-0"
                     />
@@ -50,7 +50,7 @@ defineProps({
                 </div>
 
                 <div>
-                    <UpdateLocationForm
+                    <UpdateSocialsForm
                         :user="$page.props.auth.user"
                         class="mt-10 sm:mt-0"
                     />
