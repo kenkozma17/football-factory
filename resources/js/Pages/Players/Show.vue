@@ -365,7 +365,11 @@ const ratePlayerUrl = computed(() => {
                         </div>
                         <div
                             class="flex flex-col"
-                            v-if="props.player.player_bio.socials"
+                            v-if="
+                                props.player.player_bio.instagram_url ||
+                                props.player.player_bio.youtube_url ||
+                                props.player.player_bio.facebook_url
+                            "
                         >
                             <p>Socials</p>
                             <div class="flex gap-x-3 mt-2">
