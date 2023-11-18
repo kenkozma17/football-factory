@@ -15,11 +15,11 @@ const props = defineProps({
 const form = useForm({
     _method: "PUT",
     user_id: props.user.id,
-    highlights_url: props.user.player_bio?.highlights_url,
-    instagram_url: props.user.player_bio?.instagram_url,
-    facebook_url: props.user.player_bio?.facebook_url,
-    youtube_url: props.user.player_bio?.youtube_url,
-    phone: props.user.player_bio?.phone,
+    highlights_url: props.user.player_bio?.highlights_url ?? "",
+    instagram_url: props.user.player_bio?.instagram_url ?? "",
+    facebook_url: props.user.player_bio?.facebook_url ?? "",
+    youtube_url: props.user.player_bio?.youtube_url ?? "",
+    phone: props.user.player_bio?.phone ?? "",
 });
 
 const updateSocials = () => {
