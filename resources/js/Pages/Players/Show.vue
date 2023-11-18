@@ -131,12 +131,12 @@ const ratePlayerUrl = computed(() => {
                             <p class="md:text-base text-sm">
                                 Studies at
                                 {{ props.player.player_bio.current_school }}
-                                (Class of
+
                                 <template
                                     v-if="
                                         props.player.player_bio.graduation_year
                                     "
-                                >
+                                    >(Class of
                                     {{
                                         props.player.player_bio.graduation_year
                                     }})</template

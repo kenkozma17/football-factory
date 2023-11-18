@@ -56,7 +56,7 @@ const props = defineProps({
                             <div
                                 class="col-span-1 flex items-center justify-end gap-x-2"
                             >
-                                <StarIcon class="md:w-full w-4" />
+                                <StarIcon class="md:w-auto w-4" />
                                 <p class="font-bold md:text-[1.5rem]">
                                     {{ playerStat.overall_rating }}
                                 </p>
